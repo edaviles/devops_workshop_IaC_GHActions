@@ -1,0 +1,21 @@
+name: ARM Template to deploy to Azure
+on:
+  pull_request:
+  push:
+    branches:
+        - 'master'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: whiteducksoftware/azure-arm-action@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resourceGroupName: GitHub_Zone
+          templateLocation: azuredeploy.json
+          parameters: parameters.json
+          deploymentName: IaC-deploy
+
+      - run: echo ${{ steps.deploy.outputs.containerName }}
