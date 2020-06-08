@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "environment": {
-        "value": null
+        "value": "dev"
       },
       "siteName": {
         "value": "tailspintoys"
